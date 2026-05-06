@@ -1,0 +1,524 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+
+  --color-mint-50: #ecfdf5;
+  --color-mint-500: #10b981;
+  --color-mint-700: #047857;
+
+  --color-warning-50: #fffbeb;
+  --color-warning-500: #f59e0b;
+  --color-warning-700: #b45309;
+
+  --shadow-soft: 0 20px 60px rgb(15 23 42 / 0.10);
+  --shadow-glow: 0 0 60px rgb(56 189 248 / 0.22);
+
+  --radius-4xl: 2rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  code {
+    border-radius: 0.5rem;
+    background: rgb(15 23 42 / 0.08);
+    padding: 0.15rem 0.35rem;
+    font-size: 0.85em;
+  }
+
+  .dark code {
+    background: rgb(255 255 255 / 0.12);
+  }
+}
+
+@layer components {
+  .app-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .brand-mark {
+    @apply grid size-12 place-items-center rounded-2xl bg-sky-600 text-sm font-black tracking-widest text-white shadow-lg shadow-sky-500/30;
+  }
+
+  .nav-link {
+    @apply rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-sky-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-sky-500/25 transition hover:-translate-y-0.5 hover:bg-sky-500 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-white active:translate-y-0 dark:focus:ring-offset-slate-950;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-900 transition hover:-translate-y-0.5 hover:border-sky-300 hover:bg-sky-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-bold text-slate-700 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:text-slate-200 dark:hover:bg-slate-800;
+  }
+
+  .hero-section {
+    @apply relative overflow-hidden;
+    background:
+      radial-gradient(circle at top left, rgb(14 165 233 / 0.20), transparent 32rem),
+      radial-gradient(circle at bottom right, rgb(99 102 241 / 0.18), transparent 32rem);
+  }
+
+  .eyebrow {
+    @apply text-sm font-black uppercase tracking-[0.24em] text-sky-600 dark:text-sky-300;
+  }
+
+  .glass-panel {
+    @apply rounded-[2rem] border border-white/60 bg-white/75 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl dark:border-white/10 dark:bg-white/10 dark:shadow-[var(--shadow-glow)];
+  }
+
+  .stat-card {
+    @apply rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/80;
+  }
+
+  .stat-number {
+    @apply block text-4xl font-black text-slate-950 dark:text-white;
+  }
+
+  .stat-label {
+    @apply mt-1 block text-sm font-semibold text-slate-500 dark:text-slate-400;
+  }
+
+  .section-heading {
+    @apply mx-auto max-w-3xl text-center;
+  }
+
+  .section-heading h2 {
+    @apply mt-3 text-3xl font-black tracking-tight text-slate-950 dark:text-white md:text-5xl;
+  }
+
+  .section-heading p:not(.eyebrow) {
+    @apply mt-4 text-base leading-7 text-slate-600 dark:text-slate-300;
+  }
+
+  .filter-panel {
+    @apply mt-10 grid gap-4 rounded-[2rem] border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:grid-cols-[1.4fr_0.8fr_auto];
+  }
+
+  .form-control {
+    @apply grid gap-2 text-sm font-bold text-slate-700 dark:text-slate-200;
+  }
+
+  .input-field {
+    @apply w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-sky-500 focus:ring-4 focus:ring-sky-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white;
+  }
+
+  .toggle-row {
+    @apply flex items-center gap-3 rounded-2xl border border-slate-200 px-4 py-3 text-sm font-bold text-slate-700 dark:border-slate-700 dark:text-slate-200 md:self-end;
+  }
+
+  .toggle-row input {
+    @apply size-5 accent-sky-600;
+  }
+
+  .event-card {
+    @apply rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl dark:border-slate-800 dark:bg-slate-900 dark:hover:border-sky-700;
+  }
+
+  .badge {
+    @apply inline-flex rounded-full bg-sky-100 px-3 py-1 text-xs font-black uppercase tracking-wide text-sky-700 dark:bg-sky-500/15 dark:text-sky-200;
+  }
+
+  .badge-accent {
+    @apply inline-flex rounded-full bg-amber-100 px-3 py-1 text-xs font-black uppercase tracking-wide text-amber-700 dark:bg-amber-500/15 dark:text-amber-200;
+  }
+
+  .detail-row {
+    @apply flex items-center justify-between gap-4 rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-800/70;
+  }
+
+  .detail-row dt {
+    @apply font-bold text-slate-500 dark:text-slate-400;
+  }
+
+  .detail-row dd {
+    @apply text-right font-bold text-slate-800 dark:text-slate-100;
+  }
+
+  .empty-state {
+    @apply mt-10 rounded-[2rem] border border-dashed border-slate-300 bg-white p-8 text-center font-semibold text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400;
+  }
+
+  .learning-card {
+    @apply rounded-[2rem] border border-slate-200 bg-slate-50 p-6 shadow-sm dark:border-slate-800 dark:bg-slate-950;
+  }
+
+  .learning-card h3 {
+    @apply mt-4 text-xl font-black text-slate-950 dark:text-white;
+  }
+
+  .learning-card p {
+    @apply mt-3 leading-7 text-slate-600 dark:text-slate-300;
+  }
+
+  .step-number {
+    @apply inline-flex size-12 items-center justify-center rounded-2xl bg-slate-950 text-sm font-black text-white dark:bg-white dark:text-slate-950;
+  }
+
+  .heuristic-card {
+    @apply rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .heuristic-card h3 {
+    @apply text-xl font-black text-slate-950 dark:text-white;
+  }
+
+  .heuristic-card p {
+    @apply mt-3 leading-7 text-slate-600 dark:text-slate-300;
+  }
+
+  .modal-backdrop {
+    @apply fixed inset-0 z-50 grid place-items-center bg-slate-950/70 p-4 backdrop-blur-sm;
+  }
+
+  .modal-card {
+    @apply relative max-h-[90vh] w-full max-w-2xl overflow-auto rounded-[2rem] bg-white p-6 shadow-2xl dark:bg-slate-900;
+  }
+
+  .modal-close {
+    @apply absolute right-4 top-4 grid size-10 place-items-center rounded-full bg-slate-100 text-2xl font-bold text-slate-700 transition hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700;
+  }
+
+  .toast {
+    @apply fixed bottom-6 left-1/2 z-[60] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-2xl bg-slate-950 px-5 py-4 text-center text-sm font-bold text-white shadow-2xl dark:bg-white dark:text-slate-950;
+  }
+
+  .demo-card-blue {
+    @apply rounded-3xl border border-blue-200 bg-blue-50 p-6 text-blue-900 shadow-sm;
+  }
+
+  .demo-card-green {
+    @apply rounded-3xl border border-emerald-200 bg-emerald-50 p-6 text-emerald-900 shadow-sm;
+  }
+
+  .demo-card-purple {
+    @apply rounded-3xl border border-purple-200 bg-purple-50 p-6 text-purple-900 shadow-sm;
+  }
+
+  .demo-card-orange {
+    @apply rounded-3xl border border-orange-200 bg-orange-50 p-6 text-orange-900 shadow-sm;
+  }
+
+  .demo-card-pink {
+    @apply rounded-3xl border border-pink-200 bg-pink-50 p-6 text-pink-900 shadow-sm;
+  }
+
+  .teaching-grid-1 {
+    @apply grid gap-1;
+  }
+
+  .teaching-grid-2 {
+    @apply grid gap-2 sm:grid-cols-2;
+  }
+
+  .teaching-grid-3 {
+    @apply grid gap-3 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .teaching-grid-4 {
+    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .teaching-grid-5 {
+    @apply grid gap-5 sm:grid-cols-2 lg:grid-cols-5;
+  }
+
+  .teaching-heading-xl {
+    @apply text-5xl font-black tracking-tight;
+  }
+
+  .teaching-heading-lg {
+    @apply text-4xl font-black tracking-tight;
+  }
+
+  .teaching-heading-md {
+    @apply text-3xl font-black tracking-tight;
+  }
+
+  .teaching-heading-sm {
+    @apply text-2xl font-black tracking-tight;
+  }
+
+  .teaching-muted {
+    @apply text-slate-500 dark:text-slate-400;
+  }
+
+  .teaching-surface-light {
+    @apply border border-slate-200 bg-white shadow-sm;
+  }
+
+  .teaching-surface-dark {
+    @apply dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .fake-unused-hero-banner {
+    @apply rounded-[3rem] bg-gradient-to-br from-sky-500 via-indigo-500 to-fuchsia-500 p-12 text-white shadow-2xl;
+  }
+
+  .fake-unused-sidebar {
+    @apply sticky top-24 rounded-3xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .fake-unused-admin-table {
+    @apply w-full overflow-hidden rounded-3xl border border-slate-200 text-left text-sm dark:border-slate-800;
+  }
+
+  .fake-unused-report-block {
+    @apply rounded-3xl bg-slate-950 p-6 font-mono text-sm text-slate-100;
+  }
+
+  .fake-unused-warning-box {
+    @apply rounded-3xl border border-amber-300 bg-amber-50 p-5 text-amber-900;
+  }
+
+  .fake-unused-success-box {
+    @apply rounded-3xl border border-emerald-300 bg-emerald-50 p-5 text-emerald-900;
+  }
+
+  .fake-unused-danger-box {
+    @apply rounded-3xl border border-rose-300 bg-rose-50 p-5 text-rose-900;
+  }
+
+  .fake-unused-info-box {
+    @apply rounded-3xl border border-sky-300 bg-sky-50 p-5 text-sky-900;
+  }
+}
+
+@layer utilities {
+  .animate-soft-float {
+    animation: soft-float 6s ease-in-out infinite;
+  }
+
+  .animate-pop {
+    animation: pop 0.25s ease-out;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgb(148 163 184 / 0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(148 163 184 / 0.15) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .clip-soft {
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+  }
+
+  .shadow-inner-soft {
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35);
+  }
+
+  .focus-ring-strong {
+    @apply focus:outline-none focus:ring-4 focus:ring-sky-500/30;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .content-readable {
+    max-width: 70ch;
+  }
+
+  .gpu-smooth {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.long-shadow-a { box-shadow: 0 1px 2px rgb(15 23 42 / .04), 0 8px 24px rgb(15 23 42 / .10); }
+.long-shadow-b { box-shadow: 0 1px 2px rgb(15 23 42 / .04), 0 12px 32px rgb(15 23 42 / .12); }
+.long-shadow-c { box-shadow: 0 1px 2px rgb(15 23 42 / .04), 0 16px 48px rgb(15 23 42 / .14); }
+.large-spacing-a { padding: 1rem; margin: 1rem; }
+.large-spacing-b { padding: 1.25rem; margin: 1.25rem; }
+.large-spacing-c { padding: 1.5rem; margin: 1.5rem; }
+.large-spacing-d { padding: 1.75rem; margin: 1.75rem; }
+.large-spacing-e { padding: 2rem; margin: 2rem; }
+.experimental-gradient-1 { background: linear-gradient(135deg, #0ea5e9, #6366f1); }
+.experimental-gradient-2 { background: linear-gradient(135deg, #14b8a6, #22c55e); }
+.experimental-gradient-3 { background: linear-gradient(135deg, #f97316, #ef4444); }
+.experimental-gradient-4 { background: linear-gradient(135deg, #8b5cf6, #ec4899); }
+.experimental-gradient-5 { background: linear-gradient(135deg, #64748b, #0f172a); }
+
+.practice-box-1 { border-radius: 9px; padding: 9px; margin: 1px; letter-spacing: 0.01em; }
+.practice-box-2 { border-radius: 10px; padding: 10px; margin: 2px; letter-spacing: 0.02em; }
+.practice-box-3 { border-radius: 11px; padding: 11px; margin: 3px; letter-spacing: 0.03em; }
+.practice-box-4 { border-radius: 12px; padding: 12px; margin: 4px; letter-spacing: 0.04em; }
+.practice-box-5 { border-radius: 13px; padding: 13px; margin: 5px; letter-spacing: 0.05em; }
+.practice-box-6 { border-radius: 14px; padding: 14px; margin: 6px; letter-spacing: 0.06em; }
+.practice-box-7 { border-radius: 15px; padding: 15px; margin: 7px; letter-spacing: 0.07em; }
+.practice-box-8 { border-radius: 16px; padding: 16px; margin: 8px; letter-spacing: 0.0em; }
+.practice-box-9 { border-radius: 17px; padding: 17px; margin: 9px; letter-spacing: 0.01em; }
+.practice-box-10 { border-radius: 18px; padding: 18px; margin: 0px; letter-spacing: 0.02em; }
+.practice-box-11 { border-radius: 19px; padding: 19px; margin: 1px; letter-spacing: 0.03em; }
+.practice-box-12 { border-radius: 20px; padding: 20px; margin: 2px; letter-spacing: 0.04em; }
+.practice-box-13 { border-radius: 21px; padding: 21px; margin: 3px; letter-spacing: 0.05em; }
+.practice-box-14 { border-radius: 22px; padding: 22px; margin: 4px; letter-spacing: 0.06em; }
+.practice-box-15 { border-radius: 23px; padding: 23px; margin: 5px; letter-spacing: 0.07em; }
+.practice-box-16 { border-radius: 24px; padding: 8px; margin: 6px; letter-spacing: 0.0em; }
+.practice-box-17 { border-radius: 25px; padding: 9px; margin: 7px; letter-spacing: 0.01em; }
+.practice-box-18 { border-radius: 26px; padding: 10px; margin: 8px; letter-spacing: 0.02em; }
+.practice-box-19 { border-radius: 27px; padding: 11px; margin: 9px; letter-spacing: 0.03em; }
+.practice-box-20 { border-radius: 8px; padding: 12px; margin: 0px; letter-spacing: 0.04em; }
+.practice-box-21 { border-radius: 9px; padding: 13px; margin: 1px; letter-spacing: 0.05em; }
+.practice-box-22 { border-radius: 10px; padding: 14px; margin: 2px; letter-spacing: 0.06em; }
+.practice-box-23 { border-radius: 11px; padding: 15px; margin: 3px; letter-spacing: 0.07em; }
+.practice-box-24 { border-radius: 12px; padding: 16px; margin: 4px; letter-spacing: 0.0em; }
+.practice-box-25 { border-radius: 13px; padding: 17px; margin: 5px; letter-spacing: 0.01em; }
+.practice-box-26 { border-radius: 14px; padding: 18px; margin: 6px; letter-spacing: 0.02em; }
+.practice-box-27 { border-radius: 15px; padding: 19px; margin: 7px; letter-spacing: 0.03em; }
+.practice-box-28 { border-radius: 16px; padding: 20px; margin: 8px; letter-spacing: 0.04em; }
+.practice-box-29 { border-radius: 17px; padding: 21px; margin: 9px; letter-spacing: 0.05em; }
+.practice-box-30 { border-radius: 18px; padding: 22px; margin: 0px; letter-spacing: 0.06em; }
+.practice-box-31 { border-radius: 19px; padding: 23px; margin: 1px; letter-spacing: 0.07em; }
+.practice-box-32 { border-radius: 20px; padding: 8px; margin: 2px; letter-spacing: 0.0em; }
+.practice-box-33 { border-radius: 21px; padding: 9px; margin: 3px; letter-spacing: 0.01em; }
+.practice-box-34 { border-radius: 22px; padding: 10px; margin: 4px; letter-spacing: 0.02em; }
+.practice-box-35 { border-radius: 23px; padding: 11px; margin: 5px; letter-spacing: 0.03em; }
+.practice-box-36 { border-radius: 24px; padding: 12px; margin: 6px; letter-spacing: 0.04em; }
+.practice-box-37 { border-radius: 25px; padding: 13px; margin: 7px; letter-spacing: 0.05em; }
+.practice-box-38 { border-radius: 26px; padding: 14px; margin: 8px; letter-spacing: 0.06em; }
+.practice-box-39 { border-radius: 27px; padding: 15px; margin: 9px; letter-spacing: 0.07em; }
+.practice-box-40 { border-radius: 8px; padding: 16px; margin: 0px; letter-spacing: 0.0em; }
+.practice-box-41 { border-radius: 9px; padding: 17px; margin: 1px; letter-spacing: 0.01em; }
+.practice-box-42 { border-radius: 10px; padding: 18px; margin: 2px; letter-spacing: 0.02em; }
+.practice-box-43 { border-radius: 11px; padding: 19px; margin: 3px; letter-spacing: 0.03em; }
+.practice-box-44 { border-radius: 12px; padding: 20px; margin: 4px; letter-spacing: 0.04em; }
+.practice-box-45 { border-radius: 13px; padding: 21px; margin: 5px; letter-spacing: 0.05em; }
+.practice-box-46 { border-radius: 14px; padding: 22px; margin: 6px; letter-spacing: 0.06em; }
+.practice-box-47 { border-radius: 15px; padding: 23px; margin: 7px; letter-spacing: 0.07em; }
+.practice-box-48 { border-radius: 16px; padding: 8px; margin: 8px; letter-spacing: 0.0em; }
+.practice-box-49 { border-radius: 17px; padding: 9px; margin: 9px; letter-spacing: 0.01em; }
+.practice-box-50 { border-radius: 18px; padding: 10px; margin: 0px; letter-spacing: 0.02em; }
+.practice-box-51 { border-radius: 19px; padding: 11px; margin: 1px; letter-spacing: 0.03em; }
+.practice-box-52 { border-radius: 20px; padding: 12px; margin: 2px; letter-spacing: 0.04em; }
+.practice-box-53 { border-radius: 21px; padding: 13px; margin: 3px; letter-spacing: 0.05em; }
+.practice-box-54 { border-radius: 22px; padding: 14px; margin: 4px; letter-spacing: 0.06em; }
+.practice-box-55 { border-radius: 23px; padding: 15px; margin: 5px; letter-spacing: 0.07em; }
+.practice-box-56 { border-radius: 24px; padding: 16px; margin: 6px; letter-spacing: 0.0em; }
+.practice-box-57 { border-radius: 25px; padding: 17px; margin: 7px; letter-spacing: 0.01em; }
+.practice-box-58 { border-radius: 26px; padding: 18px; margin: 8px; letter-spacing: 0.02em; }
+.practice-box-59 { border-radius: 27px; padding: 19px; margin: 9px; letter-spacing: 0.03em; }
+.practice-box-60 { border-radius: 8px; padding: 20px; margin: 0px; letter-spacing: 0.04em; }
+.practice-box-61 { border-radius: 9px; padding: 21px; margin: 1px; letter-spacing: 0.05em; }
+.practice-box-62 { border-radius: 10px; padding: 22px; margin: 2px; letter-spacing: 0.06em; }
+.practice-box-63 { border-radius: 11px; padding: 23px; margin: 3px; letter-spacing: 0.07em; }
+.practice-box-64 { border-radius: 12px; padding: 8px; margin: 4px; letter-spacing: 0.0em; }
+.practice-box-65 { border-radius: 13px; padding: 9px; margin: 5px; letter-spacing: 0.01em; }
+.practice-box-66 { border-radius: 14px; padding: 10px; margin: 6px; letter-spacing: 0.02em; }
+.practice-box-67 { border-radius: 15px; padding: 11px; margin: 7px; letter-spacing: 0.03em; }
+.practice-box-68 { border-radius: 16px; padding: 12px; margin: 8px; letter-spacing: 0.04em; }
+.practice-box-69 { border-radius: 17px; padding: 13px; margin: 9px; letter-spacing: 0.05em; }
+.practice-box-70 { border-radius: 18px; padding: 14px; margin: 0px; letter-spacing: 0.06em; }
+.practice-box-71 { border-radius: 19px; padding: 15px; margin: 1px; letter-spacing: 0.07em; }
+.practice-box-72 { border-radius: 20px; padding: 16px; margin: 2px; letter-spacing: 0.0em; }
+.practice-box-73 { border-radius: 21px; padding: 17px; margin: 3px; letter-spacing: 0.01em; }
+.practice-box-74 { border-radius: 22px; padding: 18px; margin: 4px; letter-spacing: 0.02em; }
+.practice-box-75 { border-radius: 23px; padding: 19px; margin: 5px; letter-spacing: 0.03em; }
+.practice-box-76 { border-radius: 24px; padding: 20px; margin: 6px; letter-spacing: 0.04em; }
+.practice-box-77 { border-radius: 25px; padding: 21px; margin: 7px; letter-spacing: 0.05em; }
+.practice-box-78 { border-radius: 26px; padding: 22px; margin: 8px; letter-spacing: 0.06em; }
+.practice-box-79 { border-radius: 27px; padding: 23px; margin: 9px; letter-spacing: 0.07em; }
+.practice-box-80 { border-radius: 8px; padding: 8px; margin: 0px; letter-spacing: 0.0em; }
+.practice-box-81 { border-radius: 9px; padding: 9px; margin: 1px; letter-spacing: 0.01em; }
+.practice-box-82 { border-radius: 10px; padding: 10px; margin: 2px; letter-spacing: 0.02em; }
+.practice-box-83 { border-radius: 11px; padding: 11px; margin: 3px; letter-spacing: 0.03em; }
+.practice-box-84 { border-radius: 12px; padding: 12px; margin: 4px; letter-spacing: 0.04em; }
+.practice-box-85 { border-radius: 13px; padding: 13px; margin: 5px; letter-spacing: 0.05em; }
+.practice-box-86 { border-radius: 14px; padding: 14px; margin: 6px; letter-spacing: 0.06em; }
+.practice-box-87 { border-radius: 15px; padding: 15px; margin: 7px; letter-spacing: 0.07em; }
+.practice-box-88 { border-radius: 16px; padding: 16px; margin: 8px; letter-spacing: 0.0em; }
+.practice-box-89 { border-radius: 17px; padding: 17px; margin: 9px; letter-spacing: 0.01em; }
+.practice-box-90 { border-radius: 18px; padding: 18px; margin: 0px; letter-spacing: 0.02em; }
+.practice-box-91 { border-radius: 19px; padding: 19px; margin: 1px; letter-spacing: 0.03em; }
+.practice-box-92 { border-radius: 20px; padding: 20px; margin: 2px; letter-spacing: 0.04em; }
+.practice-box-93 { border-radius: 21px; padding: 21px; margin: 3px; letter-spacing: 0.05em; }
+.practice-box-94 { border-radius: 22px; padding: 22px; margin: 4px; letter-spacing: 0.06em; }
+.practice-box-95 { border-radius: 23px; padding: 23px; margin: 5px; letter-spacing: 0.07em; }
+.practice-box-96 { border-radius: 24px; padding: 8px; margin: 6px; letter-spacing: 0.0em; }
+.practice-box-97 { border-radius: 25px; padding: 9px; margin: 7px; letter-spacing: 0.01em; }
+.practice-box-98 { border-radius: 26px; padding: 10px; margin: 8px; letter-spacing: 0.02em; }
+.practice-box-99 { border-radius: 27px; padding: 11px; margin: 9px; letter-spacing: 0.03em; }
+.practice-box-100 { border-radius: 8px; padding: 12px; margin: 0px; letter-spacing: 0.04em; }
+.practice-box-101 { border-radius: 9px; padding: 13px; margin: 1px; letter-spacing: 0.05em; }
+.practice-box-102 { border-radius: 10px; padding: 14px; margin: 2px; letter-spacing: 0.06em; }
+.practice-box-103 { border-radius: 11px; padding: 15px; margin: 3px; letter-spacing: 0.07em; }
+.practice-box-104 { border-radius: 12px; padding: 16px; margin: 4px; letter-spacing: 0.0em; }
+.practice-box-105 { border-radius: 13px; padding: 17px; margin: 5px; letter-spacing: 0.01em; }
+.practice-box-106 { border-radius: 14px; padding: 18px; margin: 6px; letter-spacing: 0.02em; }
+.practice-box-107 { border-radius: 15px; padding: 19px; margin: 7px; letter-spacing: 0.03em; }
+.practice-box-108 { border-radius: 16px; padding: 20px; margin: 8px; letter-spacing: 0.04em; }
+.practice-box-109 { border-radius: 17px; padding: 21px; margin: 9px; letter-spacing: 0.05em; }
+.practice-box-110 { border-radius: 18px; padding: 22px; margin: 0px; letter-spacing: 0.06em; }
+.practice-box-111 { border-radius: 19px; padding: 23px; margin: 1px; letter-spacing: 0.07em; }
+.practice-box-112 { border-radius: 20px; padding: 8px; margin: 2px; letter-spacing: 0.0em; }
+.practice-box-113 { border-radius: 21px; padding: 9px; margin: 3px; letter-spacing: 0.01em; }
+.practice-box-114 { border-radius: 22px; padding: 10px; margin: 4px; letter-spacing: 0.02em; }
+.practice-box-115 { border-radius: 23px; padding: 11px; margin: 5px; letter-spacing: 0.03em; }
+.practice-box-116 { border-radius: 24px; padding: 12px; margin: 6px; letter-spacing: 0.04em; }
+.practice-box-117 { border-radius: 25px; padding: 13px; margin: 7px; letter-spacing: 0.05em; }
+.practice-box-118 { border-radius: 26px; padding: 14px; margin: 8px; letter-spacing: 0.06em; }
+.practice-box-119 { border-radius: 27px; padding: 15px; margin: 9px; letter-spacing: 0.07em; }
+.practice-box-120 { border-radius: 8px; padding: 16px; margin: 0px; letter-spacing: 0.0em; }
